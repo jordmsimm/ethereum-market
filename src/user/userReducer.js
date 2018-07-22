@@ -1,7 +1,10 @@
 const initialState = {
   data: null,
   admin:false,
-  owner:false
+  owner:false,
+  store:false,
+  storeOwnerName:'',
+  storePending:false
 }
 
 const userReducer = (state = initialState, action) => {
@@ -17,7 +20,8 @@ const userReducer = (state = initialState, action) => {
     return Object.assign({}, state, {
       data: null,
       admin:false,
-      owner:false
+      owner:false,
+      
     })
   }
 
@@ -32,6 +36,15 @@ const userReducer = (state = initialState, action) => {
   {
     return Object.assign({}, state, {
       owner: action.payload.owner
+    })
+  }
+
+  if (action.type === 'SET_STORE')
+  {
+    return Object.assign({}, state, {
+      store: action.payload.store,
+      storeOwnerName: action.payload.storeOwnerName,
+      storePending:action.payload.storePending
     })
   }
 

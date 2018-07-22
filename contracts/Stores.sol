@@ -5,6 +5,9 @@ import "./Administrator.sol";
 contract Stores is Ownable{
     address public adminAddress;
     Administrator administratorContract;
+
+    address[] public storeOwnerAddresses;
+    uint storeOwnerCount;
     mapping (address =>Storeowner) storeOwner;
     mapping(uint => Storefront) stores;
     uint64 storeCount;
@@ -37,6 +40,7 @@ contract Stores is Ownable{
     constructor() public {
       owner = msg.sender;
       storeCount = 0;
+      storeOwnerCount = 0;
     }
     
     function setAdministratorContractAddress(address _adminAddress) public onlyOwner {
@@ -47,7 +51,12 @@ contract Stores is Ownable{
     function applyForStoreOwner( string storeName) public {
         storeOwner[msg.sender].name = storeName ;
         storeOwner[msg.sender].isActive = false;
+        uint _storeOwnerCount = storeOwnerAddresses.push(msg.sender);
+        storeOwnerCount = _storeOwnerCount;
         //storeOwner[msg.sender].storeCount = 0;
+     }
+     function getStoreOwnerAddress(uint _storeOwnerCount) public view returns (address _storeOwnerAddress){
+         return storeOwnerAddresses[_storeOwnerCount];
      }
      
      function activateStoreOwner(address _addr) public onlyAdmin {

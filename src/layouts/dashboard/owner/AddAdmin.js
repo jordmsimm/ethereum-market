@@ -13,7 +13,7 @@ class AddAdmin extends React.Component{
         address:''
     }
 
-    
+     
     
     addAdministrator = (address) =>{
         console.log('Address adde')
