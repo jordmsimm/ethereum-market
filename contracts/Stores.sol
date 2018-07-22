@@ -49,10 +49,15 @@ contract Stores is Ownable{
     }
     
     function applyForStoreOwner( string storeName) public {
+        bytes memory tempName = bytes(storeOwner[msg.sender].name);
+        bytes memory tempInputName = bytes(storeName);
+        
+        require(tempName.length == 0 && tempInputName.length > 0);
         storeOwner[msg.sender].name = storeName ;
         storeOwner[msg.sender].isActive = false;
-        uint _storeOwnerCount = storeOwnerAddresses.push(msg.sender);
-        storeOwnerCount = _storeOwnerCount;
+        storeOwnerAddresses.push(msg.sender);
+        uint _storeOwnerCount = storeOwnerCount + 1;
+        storeOwnerCount =  _storeOwnerCount;
         //storeOwner[msg.sender].storeCount = 0;
      }
      function getStoreOwnerAddress(uint _storeOwnerCount) public view returns (address _storeOwnerAddress){
@@ -103,11 +108,9 @@ contract Stores is Ownable{
             stores[_storeFrontId].products[_productId].quantity
         );
     }
-    function getTotalStores() public view returns (uint storeCount){
-        return storeCount;
-    }
+    function getTotalStores() public view returns (uint _storeCount){return storeCount;}
+
+    function getTotalStoreOwners() public view returns (uint _storeOwnerCount){return storeOwnerCount;}
     
-    function buyProduct(address storeOwnerAddress,uint _storeFrontId, uint _productId) public payable{
-        
-    }
+    
 }

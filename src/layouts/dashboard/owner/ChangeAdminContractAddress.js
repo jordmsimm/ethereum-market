@@ -11,7 +11,7 @@ class ChangeAdminContractAddress extends React.Component{
         address:'',
         currentAddress:''
     }
-        
+         
     componentDidMount(){
         const contract = require('truffle-contract')
         const stores = contract(StoresContract)
