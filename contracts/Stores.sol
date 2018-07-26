@@ -1,7 +1,7 @@
 pragma solidity ^0.4.23;
 import "./Administrator.sol";
 //import "browser/Ownable.sol";
-//import "zeppelin-solidity/contracts/ownership/Ownable.sol";
+import "./zeppelin/ownership/Ownable.sol";
 contract Stores is Ownable{
     address public adminAddress;
     Administrator administratorContract;
@@ -53,7 +53,7 @@ contract Stores is Ownable{
         bytes memory tempInputName = bytes(storeName);
         
         require(tempName.length == 0 && tempInputName.length > 0);
-        storeOwner[msg.sender].name = storeName ;
+        storeOwner[msg.sender].name = storeName;
         storeOwner[msg.sender].isActive = false;
         storeOwnerAddresses.push(msg.sender);
         uint _storeOwnerCount = storeOwnerCount + 1;

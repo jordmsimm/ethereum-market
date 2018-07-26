@@ -22,8 +22,8 @@ contract('Stores', function(accounts) {
             adminInstance = instance1
             storesInstance = instance2;
             
-            storesInstance.setAdministratorContractAddress(adminInstance.address)
-            return storesInstance.applyForStoreOwner("Test Store", {from: accounts[1]});
+            return storesInstance.setAdministratorContractAddress(adminInstance.address)
+            //return storesInstance.applyForStoreOwner("Test Store", {from: accounts[1]});
             }).then(function() {
             return storesInstance.activateStoreOwner(accounts[1], {from:accounts[0]});
             }).then(function() {
@@ -41,8 +41,8 @@ contract('Stores', function(accounts) {
             adminInstance = instance1
             storesInstance = instance2;
             
-            storesInstance.setAdministratorContractAddress(adminInstance.address)
-            return storesInstance.applyForStoreOwner("Test Store", {from: accounts[1]});
+            return storesInstance.setAdministratorContractAddress(adminInstance.address)
+            //return storesInstance.applyForStoreOwner("Test Store", {from: accounts[1]});
             }).then(function() {
             return storesInstance.activateStoreOwner(accounts[1], {from:accounts[0]});
             }).then(function() {
@@ -61,8 +61,8 @@ contract('Stores', function(accounts) {
             adminInstance = instance1
             storesInstance = instance2;
             
-            storesInstance.setAdministratorContractAddress(adminInstance.address)
-                return storesInstance.applyForStoreOwner("Test Store", {from: accounts[1]});
+            return storesInstance.setAdministratorContractAddress(adminInstance.address)
+            //    return storesInstance.applyForStoreOwner("Test Store", {from: accounts[1]});
             }).then(function() {
                 return storesInstance.activateStoreOwner(accounts[1], {from:accounts[0]});
             }).then(function() {
@@ -81,8 +81,8 @@ contract('Stores', function(accounts) {
             adminInstance = instance1
             storesInstance = instance2;
             
-            storesInstance.setAdministratorContractAddress(adminInstance.address)
-                return storesInstance.applyForStoreOwner("Test Store", {from: accounts[1]});
+            return storesInstance.setAdministratorContractAddress(adminInstance.address)
+             //   return storesInstance.applyForStoreOwner("Test Store", {from: accounts[1]});
             }).then(function() {
                 return storesInstance.activateStoreOwner(accounts[1], {from:accounts[0]});
             }).then(function() {

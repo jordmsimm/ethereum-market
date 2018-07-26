@@ -2,13 +2,15 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import StoresContract from '../../../../build/contracts/Stores.json';
+import StoreListItem from './StoreListItem'
 
 
 class ListStores extends React.Component{
     state={
         error:undefined,
         message:'',
-        address:''
+        address:'',
+        allStores:[]
     }
         
     componentDidMount(){
@@ -18,30 +20,46 @@ class ListStores extends React.Component{
         const stores = contract(StoresContract)
         stores.setProvider(this.props.web3.currentProvider)
         var storesInstance;
+        let allStores = [];
         this.props.web3.eth.getCoinbase((error, coinbase) => {
             stores.deployed().then((instance) => {
                 storesInstance = instance;
                 storesInstance.getTotalStoreOwners.call()
                 .then((result)=>{
                     console.log('total stores')
-                    
-                    
-                    console.log(totalStores)
+                     
+                     var storeIndx = 0
+                    //console.log(totalStores)
                     if(result.toNumber() > 0){
                         var totalStores = Number(result.toNumber()) - 1;
-                        storesInstance.getStoreOwnerAddress(totalStores)
+                        console.log(totalStores)
+                        for(var x=0;x <= totalStores;x++){
+                        storesInstance.getStoreOwnerAddress(x)
                         .then((result)=>{
                             console.log('store owner address');
                             console.log(result)
+                            let storeOwnerAddress = result;
                             storesInstance.getStoreOwnerInformation(result)
                             .then((result)=>{
                                 console.log('store info')
-                                console.log(result)
+                                console.log(storeOwnerAddress)
+                                
+                                var storeObj = {
+                                    name:result[0],
+                                    isActive:result[1],
+                                    address:storeOwnerAddress,
+                                    key:storeIndx 
+                                }
+                                storeIndx++;
+                                
+                                allStores.push(storeObj)
+                                console.log(allStores)
+                                this.setState(() => ({allStores:allStores}))
+                                //console.log(result)
                             })
                         })
-                        .catch((err)=>{
-                            console.log(err)
-                        })
+                    }
+                        
 
                     }
                     //this.setState(() => ({currentAddress:result}))
@@ -56,11 +74,36 @@ class ListStores extends React.Component{
         })
     }
 
+    handleActivateButton(storeObj){
+        console.log('Change store owner address')
+        console.log(storeObj)
+        // const contract = require('truffle-contract')
+        // const stores = contract(StoresContract)
+        // stores.setProvider(this.props.web3.currentProvider)
+        // var storesInstance;
+        // this.props.web3.eth.getCoinbase((error, coinbase) => {
+        //     stores.deployed().then((instance) => {
+        //         storesInstance = instance;
+        //         storesInstance.activateStoreOwner(address, {from:coinbase})
+        //         .then((result) => this.setState(() => ({address:'',message:"StoreOwnerActivated"})))
+        //     });
+        // })
+    }
+
+    handleBlockButton(){
+        console.log('blocked')
+    }
     
     render(){
         return (
             <div>
                 this is the stores list
+                {this.state.allStores.map((item)=>{
+                    return <StoreListItem storeObj={item} 
+                            handleActivateButton={this.handleActivateButton}
+                            handleBlockButton={this.handleBlockButton}
+                            />
+                })}
             </div>
         ) ;
     }

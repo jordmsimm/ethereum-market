@@ -1,5 +1,5 @@
-import "./Ownable.sol";
-//import "zeppelin-solidity/contracts/ownership/Ownable.sol";
+//import "./Ownable.sol";
+import "./zeppelin/ownership/Ownable.sol";
 
 pragma solidity ^0.4.23;
 contract Administrator is Ownable{
