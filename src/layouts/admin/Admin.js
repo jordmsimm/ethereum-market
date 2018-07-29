@@ -9,7 +9,6 @@ import ListStores from './ListStores';
 const Admin = (props) =>(
     <div className='option'>
         <h3>Admin Functions </h3>
-        <ActivateStoreOwner/>
         <ListStores/>
         
     </div>

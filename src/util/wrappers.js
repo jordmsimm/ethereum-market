@@ -18,6 +18,31 @@ export const UserIsNotAuthenticated = UserAuthWrapper({
   predicate: user => user.data === null,
   allowRedirectBack: false
 })
+
+
+
+export const UserIsOwner = UserAuthWrapper({
+  authSelector: state => state.user,
+  redirectAction: routerActions.replace,
+  failureRedirectPath: (state, ownProps) => ownProps.location.query.redirect || '/',
+  wrapperDisplayName: 'UserIsNotAuthenticated',
+  predicate: user => user.owner === true,
+  allowRedirectBack: false
+})
+
+export const UserIsAdmin = UserAuthWrapper({
+  authSelector: state => state.user,
+  redirectAction: routerActions.replace,
+  failureRedirectPath: (state, ownProps) => ownProps.location.query.redirect || '/',
+  wrapperDisplayName: 'UserIsNotAuthenticated',
+  predicate: user => user.admin === true,
+  allowRedirectBack: false
+})
+
+
+
+
+
  
 // UI Component Wrappers
 

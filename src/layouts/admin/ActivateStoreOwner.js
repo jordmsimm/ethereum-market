@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import StoresContract from '../../../../build/contracts/Stores.json';
+import StoresContract from '../../../build/contracts/Stores.json';
 
 
 class ActivateStoreOwner extends React.Component{

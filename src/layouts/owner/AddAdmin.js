@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import store from '../../../store'
-import AdministratorContract from '../../../../build/contracts/Administrator.json'
+import store from '../../store'
+import AdministratorContract from '../../../build/contracts/Administrator.json'
 console.log(store)
 
 
@@ -12,7 +12,7 @@ class AddAdmin extends React.Component{
         message:'',
         address:''
     }
-
+ 
      
     
     addAdministrator = (address) =>{

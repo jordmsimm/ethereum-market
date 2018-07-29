@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import store from '../../../store'
-import StoresContract from '../../../../build/contracts/Stores.json';
+import store from '../../store'
+import StoresContract from '../../../build/contracts/Stores.json';
 
 
 class ApplyStoreOwner extends React.Component{
@@ -62,9 +62,10 @@ class ApplyStoreOwner extends React.Component{
                 {this.props.store || this.props.storePending  ? 
                     <p>Hello {this.props.storeOwnerName}</p>:
                     <div><p>Apply for store:</p><button className="" onClick={this.handleApplyStoreOwner} >Apply</button></div>
-                    
+
                 }
-                {this.props.storePending && <p>Application status: pending</p> }
+                {this.props.storePending && <p>Store Owner status: pending</p> }
+                {this.props.store && <p>Store Owner status: Active</p> }
                 
                 
                     
