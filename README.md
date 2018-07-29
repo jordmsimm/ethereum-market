@@ -1,5 +1,5 @@
 # ethereum-market
-A Dapp market placed built on ethereum
+A Dapp market place built on ethereum
 
   
 Compile contracts:
