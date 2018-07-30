@@ -76,12 +76,12 @@ class CreateStoreFront extends React.Component{
         const showForm = !this.state.showForm;
         this.setState(() => ({showForm}))
     }
-
+    //0xb3f89ac8c2c296a7ff75e2226a8f591e848aced8
     render(){
         return (
             <div>
                 {this.state.showForm ? <button onClick={this.handleToggleForm}>Hide</button>: <button onClick={this.handleToggleForm}>Create New Store Front</button>}
-                <img wwidth'src="https://media.giphy.com/media/4UfAFRHnp1sje/giphy.gif"/>
+                
 
                 {this.state.loading && <p> Loading</p>}
                 {this.state.showForm &&

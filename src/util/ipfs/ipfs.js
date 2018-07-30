@@ -7,5 +7,6 @@ const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' })
 export default ipfs;
 
 //   https://ipfs.infura.io/ipfs/QmeowkxqBSkvwRyYMeFdjqNX8ZWC3E8anmd6SBMErTmCax
+//json data https://ipfs.infura.io/ipfs/QmUeiTdEPJ87WsqrrDLbJ6sbu1w9hyXALE6KZzA3tpd6pj
 //https://ipfs.infura.io/ipfs/
 //https://ipfs.infura.io:5001/api/QmeowkxqBSkvwRyYMeFdjqNX8ZWC3E8anmd6SBMErTmCax

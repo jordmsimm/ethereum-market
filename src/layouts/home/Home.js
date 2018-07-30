@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-
+import Test from '../test'
 class Home extends Component {
   render() {
     return(
       <main className="container">
         <div className="pure-g">
           <div className="pure-u-1-1">
+            <Test/>
             <h1>Good to Go!</h1>
             <p>Your Truffle Box is installed and ready.</p>
             <h2>Smart Contract Authentication</h2>
